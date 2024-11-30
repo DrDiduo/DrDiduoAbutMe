@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr Diduo's Personal Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #111; 
+            color: #ccc;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2; 
+            display: none; 
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            padding: 20px;
+            background-color: rgba(34, 34, 34, 0.9); 
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+            z-index: 1; 
+            display: none;
+        }
+
+        #checkButton {
+            padding: 15px 30px;
+            font-size: 1.5em;
+            color: #fff;
+            background-color: #ff6347;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 2;
+            position: relative;
+        }
+
+        #checkButton:hover {
+            background-color: #e5533b;
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            color: #ff6347;
+            margin: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #444;
+        }
+
+        #current-time {
+            font-size: 1.2em;
+            color: #ffa;
+            margin-top: 5px;
+        }
+
+        h3 {
+            font-size: 2.5em;
+            color: #fff;
+            margin-top: 30px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        p, ul {
+            font-size: 1.3em;
+            line-height: 1.6;
+            margin-top: 15px;
+            color: #ddd;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin: 10px 0;
+            color: #ccc;
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 1.3em;
+            color: #aaa;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            header h2 {
+                font-size: 1.3em;
+            }
+
+            h3 {
+                font-size: 2em;
+            }
+
+            p, ul {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <video class="video-bg" id="backgroundVideo" loop playsinline>
+        <source src="sad.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <button id="checkButton">Check</button>
+
+    <div class="container">
+        <header>
+            <h1>Dr Diduo</h1>
+            <p id="current-time">Loading time...</p>
+        </header>
+
+        <section class="about">
+            <h3>About Me</h3>
+            <p>
+                I don't need many words to describe myself. I'm just a person living in a world full of codes and algorithms, but without anyone to share this life with. Away from the spotlight, I find myself among lines of code, but there's no one here to feel what I feel.
+            </p>
+            <p>
+                I find myself surrounded by loneliness. My only friends are those I meet on social media, but nothing can replace the feeling of solitude that follows me.
+            </p>
+            <p>
+                Life goes on, but I can't hide that I am still on a constant search for something bigger. Everything might just be a series of commands and results, but my heart can’t stop asking: why all this? Will there be a day when I step out of this virtual world and find someone to share my reality with?
+            </p>
+        </section>
+        
+        <section class="preferences">
+            <h3>Things I Love</h3>
+            <ul>
+                <li>Typing on my computer at night</li>
+            </ul>
+        </section>
+        
+        <section class="dislikes">
+            <h3>Things I Don't Like</h3>
+            <ul>
+                <li>Loneliness</li>
+                <li>Chaos</li>
+                <li>Pretending that I'm okay when I'm not</li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>If you want to talk about anything or need help with programming, I can be here... just on Discord / diduo_.sa</p>
+        </footer>
+    </div>
+
+    <script>
+        const checkButton = document.getElementById('checkButton');
+        const backgroundVideo = document.getElementById('backgroundVideo');
+        const container = document.querySelector('.container');
+
+        checkButton.addEventListener('click', () => {
+            backgroundVideo.style.display = 'block';
+            backgroundVideo.play();
+            container.style.display = 'block';
+            checkButton.style.display = 'none';
+        });
+
+        function updateTime() {
+            const timeElement = document.getElementById('current-time');
+            const now = new Date();
+            const options = { 
+                timeZoneName: 'short', 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit', 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+
+            const formattedTime = new Intl.DateTimeFormat(navigator.language, options).format(now);
+            timeElement.textContent = formattedTime;
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+</body>
+</html>
