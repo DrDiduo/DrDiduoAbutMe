@@ -26,6 +26,7 @@
             height: 100%;
             object-fit: cover;
             z-index: -1;
+            display: none; /* إخفاء الفيديو في البداية */
         }
 
         .content {
@@ -37,6 +38,22 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
             max-width: 500px;
             width: 90%;
+            display: none; /* إخفاء المحتوى في البداية */
+        }
+
+        .click-button {
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            background-color: #ff6347;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .click-button:hover {
+            background-color: #e5533b;
         }
 
         h1 {
@@ -77,12 +94,17 @@
 </head>
 <body>
 
-    <video class="video-bg" autoplay loop muted="false" playsinline>
+    <!-- زر Click -->
+    <button class="click-button" id="clickButton">Click</button>
+
+    <!-- فيديو الخلفية -->
+    <video class="video-bg" id="backgroundVideo" loop playsinline>
         <source src="sad.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
-    <div class="content">
+    <!-- محتوى الموقع -->
+    <div class="content" id="mainContent">
         <h1>Welcome to My Social Hub</h1>
         <p>Connect with me on my social platforms!</p>
         <div class="social-links">
@@ -93,6 +115,26 @@
             © 2024 - All rights reserved.
         </footer>
     </div>
+
+    <script>
+        // الحصول على عناصر الزر والفيديو والمحتوى
+        const clickButton = document.getElementById('clickButton');
+        const backgroundVideo = document.getElementById('backgroundVideo');
+        const mainContent = document.getElementById('mainContent');
+
+        // عند الضغط على زر "Click"
+        clickButton.addEventListener('click', () => {
+            // تشغيل الفيديو
+            backgroundVideo.style.display = 'block';
+            backgroundVideo.play();
+
+            // عرض المحتوى
+            mainContent.style.display = 'block';
+
+            // إخفاء زر "Click"
+            clickButton.style.display = 'none';
+        });
+    </script>
 
 </body>
 </html>
