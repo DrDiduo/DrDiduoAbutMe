@@ -3,109 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Play Video</title>
+    <title>Social Media Hub</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #121212;
-            color: #fff;
             margin: 0;
             padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: #fff;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
             overflow: hidden;
         }
 
-        .container {
-            text-align: center;
-        }
-
-        .button {
-            padding: 15px 30px;
-            font-size: 1.2em;
-            color: #fff;
-            background-color: #ff6347;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .button:hover {
-            background-color: #e5533b;
-        }
-
-        .video-modal {
-            display: none;
+        .video-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            justify-content: center;
-            align-items: center;
-            z-index: 10;
+            object-fit: cover;
+            z-index: -1;
         }
 
-        .video-modal video {
-            max-width: 90%;
-            max-height: 80%;
+        .content {
+            z-index: 1;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+            max-width: 500px;
+            width: 90%;
         }
 
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 2em;
-            color: #fff;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        .close-btn:hover {
+        h1 {
+            font-size: 2.5rem;
             color: #ff6347;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #ddd;
+            margin-bottom: 30px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: #fff;
+            background-color: #ff6347;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: #e5533b;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #aaa;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Click to Play Video</h1>
-        <button class="button" id="playButton">Click Me</button>
+    <video class="video-bg" autoplay loop muted="false" playsinline>
+        <source src="background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="content">
+        <h1>Welcome to My Social Hub</h1>
+        <p>Connect with me on my social platforms!</p>
+        <div class="social-links">
+            <a href="https://discord.com/users/881081764599173131" target="_blank">Discord</a>
+            <a href="https://www.facebook.com/ahmed.140211/" target="_blank">Facebook</a>
+        </div>
+        <footer>
+            © 2024 - All rights reserved.
+        </footer>
     </div>
-
-    <div class="video-modal" id="videoModal">
-        <button class="close-btn" id="closeButton">&times;</button>
-        <video id="sadVideo" controls>
-            <source src="sad.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-
-    <script>
-        const playButton = document.getElementById('playButton');
-        const videoModal = document.getElementById('videoModal');
-        const closeButton = document.getElementById('closeButton');
-        const sadVideo = document.getElementById('sadVideo');
-
-        // Show the modal and play the video
-        playButton.addEventListener('click', () => {
-            videoModal.style.display = 'flex';
-            sadVideo.play();
-        });
-
-        // Hide the modal and pause the video
-        closeButton.addEventListener('click', () => {
-            videoModal.style.display = 'none';
-            sadVideo.pause();
-        });
-    </script>
 
 </body>
 </html>
