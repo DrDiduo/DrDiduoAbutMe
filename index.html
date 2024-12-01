@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr Diduo's Personal Page</title>
+    <title>Connect with Dr Diduo</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #111; 
-            color: #ccc;
+            background-color: #121212; 
+            color: #fff;
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             height: 100vh;
             overflow: hidden;
         }
@@ -25,187 +26,86 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            z-index: -2; 
-            display: none; 
+            z-index: -1; 
+            filter: brightness(50%);
         }
 
         .container {
-            width: 90%;
-            max-width: 600px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.8);
             padding: 20px;
-            background-color: rgba(34, 34, 34, 0.9); 
-            border-radius: 10px;
+            border-radius: 15px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-            z-index: 1; 
-            display: none;
-            overflow-y: auto;
-            max-height: 80vh; /* السماح بالتمرير على الهواتف */
         }
 
-        #checkButton {
-            padding: 10px 20px;
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #ff6347;
+        }
+
+        h2 {
+            font-size: 1.2em;
+            margin: 10px 0;
+            color: #ffa500;
+        }
+
+        .social-links {
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            margin: 0 10px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5em;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #ff6347;
+            transform: scale(1.2);
+        }
+
+        .button {
+            padding: 15px 30px;
             font-size: 1.2em;
             color: #fff;
             background-color: #ff6347;
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
             cursor: pointer;
-            z-index: 2;
-            position: relative;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
         }
 
-        #checkButton:hover {
+        .button:hover {
             background-color: #e5533b;
-        }
-
-        header h1 {
-            font-size: 2.5em;
-            color: #ff6347;
-            margin: 0;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #444;
-            text-align: center;
-        }
-
-        #current-time {
-            font-size: 1em;
-            color: #ffa;
-            margin-top: 5px;
-            text-align: center;
-            display: block;
-        }
-
-        h3 {
-            font-size: 1.8em;
-            color: #fff;
-            margin-top: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        p, ul {
-            font-size: 1em;
-            line-height: 1.4;
-            margin-top: 10px;
-            color: #ddd;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        ul li {
-            margin: 10px 0;
-            color: #ccc;
-        }
-
-        footer {
-            margin-top: 20px;
-            font-size: 0.9em;
-            color: #aaa;
-            font-style: italic;
-            text-align: center;
-        }
-
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 2em;
-            }
-
-            h3 {
-                font-size: 1.5em;
-            }
-
-            p, ul {
-                font-size: 0.9em;
-            }
-
-            #checkButton {
-                padding: 8px 16px;
-                font-size: 1em;
-            }
-
-            footer {
-                font-size: 0.8em;
-            }
         }
     </style>
 </head>
 <body>
 
-    <video class="video-bg" id="backgroundVideo" loop playsinline>
-        <source src="sad.mp4" type="video/mp4">
+    <video class="video-bg" autoplay loop muted>
+        <source src="background.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
-    <button id="checkButton">Check</button>
-
     <div class="container">
-        <header>
-            <h1>Dr Diduo</h1>
-            <p id="current-time">Loading time...</p>
-        </header>
+        <h1>Connect with Dr Diduo</h1>
+        <h2>Welcome to my personal space!</h2>
 
-        <section class="about">
-            <h3>About Me</h3>
-            <p>
-                I don't need many words to describe myself. I'm just a person living in a world full of codes and algorithms, but without anyone to share this life with.
-            </p>
-        </section>
-        
-        <section class="preferences">
-            <h3>Things I Love</h3>
-            <ul>
-                <li>Typing on my computer at night</li>
-            </ul>
-        </section>
-        
-        <section class="dislikes">
-            <h3>Things I Don't Like</h3>
-            <ul>
-                <li>Loneliness</li>
-                <li>Chaos</li>
-            </ul>
-        </section>
+        <div class="social-links">
+            <a href="https://discord.com/users/881081764599173131" target="_blank" title="Discord">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/discord.png" alt="Discord">
+            </a>
+            <a href="https://www.facebook.com/ahmed.140211/" target="_blank" title="Facebook">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/facebook.png" alt="Facebook">
+            </a>
+        </div>
 
-        <footer>
-            <p>If you want to talk about anything or need help with programming, I can be here... just on Discord / diduo_.sa</p>
-        </footer>
+        <button class="button" onclick="alert('Thank you for visiting!')">Start Chat</button>
     </div>
 
-    <script>
-        const checkButton = document.getElementById('checkButton');
-        const backgroundVideo = document.getElementById('backgroundVideo');
-        const container = document.querySelector('.container');
-
-        checkButton.addEventListener('click', () => {
-            backgroundVideo.style.display = 'block';
-            backgroundVideo.play();
-            container.style.display = 'block';
-            checkButton.style.display = 'none';
-        });
-
-        function updateTime() {
-            const timeElement = document.getElementById('current-time');
-            const now = new Date();
-            const options = { 
-                timeZoneName: 'short', 
-                hour: '2-digit', 
-                minute: '2-digit', 
-                second: '2-digit', 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-            };
-
-            const formattedTime = new Intl.DateTimeFormat(navigator.language, options).format(now);
-            timeElement.textContent = formattedTime;
-        }
-
-        setInterval(updateTime, 1000);
-        updateTime();
-    </script>
 </body>
 </html>
