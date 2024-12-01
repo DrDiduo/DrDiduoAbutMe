@@ -84,6 +84,12 @@
             background-color: #e5533b;
         }
 
+        .visit-counter {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #ff6347;
+        }
+
         footer {
             margin-top: 20px;
             font-size: 0.8rem;
@@ -108,25 +114,50 @@
             <a href="https://discord.com/users/881081764599173131" target="_blank">Discord</a>
             <a href="https://www.facebook.com/ahmed.140211/" target="_blank">Facebook</a>
         </div>
+        <div class="visit-counter" id="visitCounter">
+            Visits: Loading...
+        </div>
         <footer>
             © 2024 - All rights reserved.
         </footer>
     </div>
 
     <script>
-
+        // زر Click
         const clickButton = document.getElementById('clickButton');
         const backgroundVideo = document.getElementById('backgroundVideo');
         const mainContent = document.getElementById('mainContent');
+
+        // عداد الزيارات
+        const visitCounter = document.getElementById('visitCounter');
+
+        // تحديث عداد الزيارات
+        function updateVisitCount() {
+            let visits = localStorage.getItem('siteVisits') || 0;
+            visits = parseInt(visits) + 1;
+            localStorage.setItem('siteVisits', visits);
+            visitCounter.textContent = `Visits: ${visits}`;
+        }
+
         clickButton.addEventListener('click', () => {
-          
+            // تشغيل الفيديو
             backgroundVideo.style.display = 'block';
             backgroundVideo.play();
 
+            // عرض المحتوى
             mainContent.style.display = 'block';
 
-           
+            // تحديث عداد الزيارات
+            updateVisitCount();
+
+            // إخفاء زر Click
             clickButton.style.display = 'none';
+        });
+
+        // عرض عدد الزيارات عند فتح الموقع
+        document.addEventListener('DOMContentLoaded', () => {
+            const visits = localStorage.getItem('siteVisits') || 0;
+            visitCounter.textContent = `Visits: ${visits}`;
         });
     </script>
 
