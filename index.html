@@ -3,68 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connect with Dr Diduo</title>
+    <title>Play Video</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #121212; 
+            background-color: #121212;
             color: #fff;
             margin: 0;
             padding: 0;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             height: 100vh;
             overflow: hidden;
         }
 
-        .video-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1; 
-            filter: brightness(50%);
-        }
-
         .container {
             text-align: center;
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-        }
-
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            color: #ff6347;
-        }
-
-        h2 {
-            font-size: 1.2em;
-            margin: 10px 0;
-            color: #ffa500;
-        }
-
-        .social-links {
-            margin: 20px 0;
-        }
-
-        .social-links a {
-            margin: 0 10px;
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.5em;
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: #ff6347;
-            transform: scale(1.2);
         }
 
         .button {
@@ -75,37 +30,82 @@
             border: none;
             border-radius: 10px;
             cursor: pointer;
-            margin-top: 20px;
             transition: background-color 0.3s ease;
         }
 
         .button:hover {
             background-color: #e5533b;
         }
+
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .video-modal video {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2em;
+            color: #fff;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: #ff6347;
+        }
     </style>
 </head>
 <body>
 
-    <video class="video-bg" autoplay loop muted>
-        <source src="background.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
     <div class="container">
-        <h1>Connect with Dr Diduo</h1>
-        <h2>Welcome to my personal space!</h2>
-
-        <div class="social-links">
-            <a href="https://discord.com/users/881081764599173131" target="_blank" title="Discord">
-                <img src="https://img.icons8.com/ios-filled/50/ffffff/discord.png" alt="Discord">
-            </a>
-            <a href="https://www.facebook.com/ahmed.140211/" target="_blank" title="Facebook">
-                <img src="https://img.icons8.com/ios-filled/50/ffffff/facebook.png" alt="Facebook">
-            </a>
-        </div>
-
-        <button class="button" onclick="alert('Thank you for visiting!')">Start Chat</button>
+        <h1>Click to Play Video</h1>
+        <button class="button" id="playButton">Click Me</button>
     </div>
+
+    <div class="video-modal" id="videoModal">
+        <button class="close-btn" id="closeButton">&times;</button>
+        <video id="sadVideo" controls>
+            <source src="sad.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <script>
+        const playButton = document.getElementById('playButton');
+        const videoModal = document.getElementById('videoModal');
+        const closeButton = document.getElementById('closeButton');
+        const sadVideo = document.getElementById('sadVideo');
+
+        // Show the modal and play the video
+        playButton.addEventListener('click', () => {
+            videoModal.style.display = 'flex';
+            sadVideo.play();
+        });
+
+        // Hide the modal and pause the video
+        closeButton.addEventListener('click', () => {
+            videoModal.style.display = 'none';
+            sadVideo.pause();
+        });
+    </script>
 
 </body>
 </html>
